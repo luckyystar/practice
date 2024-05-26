@@ -121,6 +121,10 @@ div.booked {
     display: block;
 }
 
+div#calendar ul.dates li.past {
+    color: #b8b8b8; /* Change to the desired shade of gray */
+}
+
 div#calendar ul.label {
     float: left;
     margin: 0;
