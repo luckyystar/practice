@@ -1,0 +1,247 @@
+body {
+    font-family: "Arial";
+}
+
+div#calendar {
+    margin: 0 auto;
+    padding: 0;
+    width: 602px;
+    overflow: hidden; /* Add this line */
+}
+
+div#calendar div.box {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #3FA7D6;
+}
+
+div#calendar div.header {
+    line-height: 40px;
+    vertical-align: middle;
+    position: absolute;
+    left: 11px;
+    top: 0;
+    width: 582px;
+    height: 40px;
+    text-align: center;
+}
+
+div#calendar div.header a.prev,
+div#calendar div.header a.next {
+    position: absolute;
+    top: 0;
+    height: 17px;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFF;
+}
+
+div#calendar div.header span.title {
+    color: #FFF;
+    font-size: 18px;
+}
+
+div#calendar div.header a.prev {
+    left: 0;
+}
+
+div#calendar div.header a.next {
+    right: 0;
+}
+
+/*******************************Calendar Content Cells*********************************/
+div#calendar div.box-content {
+    border: 1px solid #3FA7D6;
+    border-top: none;
+    overflow: hidden; /* Add this line */
+}
+
+.reservation_form{
+    background-color: #e64343;
+}
+.reservation-box {
+    width: 80%; /* Adjusted width */
+    max-width: 400px; /* Added max-width for responsiveness */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%; /* Adjust top positioning */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center align content */
+}
+
+.reservation-box input,
+.reservation-box select,
+.reservation-box textarea {
+    width: 100%; /* Adjusted width */
+    padding: 8px; /* Decreased padding */
+    box-sizing: border-box;
+}
+
+div.open,
+div.booked {
+    /* Adjusted to ensure content visibility */
+    min-height: 100px; /* Adjust as needed */
+    overflow: auto; /* Added overflow */
+}
+
+
+
+/* Style for form elements */
+.reservation-box .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reservation-box label {
+    width: 100px;
+    font-size: 16px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+/* Center align text within form elements */
+.reservation-box button {
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Optional: Center align button */
+.reservation-box button {
+    margin: 20px auto 0;
+    display: block;
+}
+
+div#calendar ul.label {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+div#calendar ul.label li {
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    float: left;
+    list-style-type: none;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    color: #000;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+div#calendar ul.dates {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    display: flex; /* Add this line */
+    flex-wrap: wrap; /* Add this line */
+}
+
+/** overall width = width+padding-right**/
+div#calendar ul.dates li {
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    margin-top: 5px;
+    line-height: 80px;
+    vertical-align: middle;
+    float: left;
+    list-style-type: none;
+    width: 80px;
+    height: 80px;
+    font-size: 25px;
+    background-color: #FFF;
+    color: #000;
+    text-align: center;
+    position: relative;
+}
+
+:focus {
+    outline: none;
+}
+
+div.clear {
+    clear: both;
+}
+
+li div {
+    display: flex;
+}
+
+li div form {
+    display: inline;
+    align-self: center;
+    margin: 0;
+    position: absolute;
+    bottom: 2px;
+}
+
+div.open {
+    background: #59CD90;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+div.booked {
+    background: #D36135;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: inherit;
+}
+
+.submit {
+    box-shadow: inset 0 1px 0 0 #fff;
+    background: linear-gradient(to bottom, #fff 5%, #f6f6f6 100%);
+    background-color: #e64343;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 12px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.submit:hover {
+    background: linear-gradient(to bottom, #f6f6f6 5%, #fff 100%);
+    background-color: #f6f6f6;
+}
+
+.submit:active {
+    position: relative;
+    top: 1px;
+}
