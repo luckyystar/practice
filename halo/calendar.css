@@ -1,3 +1,9 @@
+*,::before, ::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     font-family: "Arial";
 }
@@ -5,7 +11,7 @@ body {
 div#calendar {
     margin: 0 auto;
     padding: 0;
-    width: 602px;
+    width: 605px;
     overflow: hidden; /* Add this line */
 }
 
@@ -62,32 +68,22 @@ div#calendar div.box-content {
 
 .reservation_form{
     background-color: #e64343;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 .reservation-box {
-    width: 80%; /* Adjusted width */
-    max-width: 400px; /* Added max-width for responsiveness */
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 5px;
     position: fixed;
-    top: 50%; /* Adjust top positioning */
+    bottom: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center; /* Center align content */
-}
-
-.reservation-box input,
-.reservation-box select,
-.reservation-box textarea {
-    width: 100%; /* Adjusted width */
-    padding: 8px; /* Decreased padding */
-    box-sizing: border-box;
 }
 
 div.open,
@@ -96,8 +92,6 @@ div.booked {
     min-height: 100px; /* Adjust as needed */
     overflow: auto; /* Added overflow */
 }
-
-
 
 /* Style for form elements */
 .reservation-box .form-group {
@@ -111,6 +105,7 @@ div.booked {
     font-size: 16px;
     text-align: right;
     padding-right: 10px;
+    line-height: 1;
 }
 
 
