@@ -196,7 +196,7 @@ private function bookingForm($date)
             </div>
             <!-- Add other form fields here -->
             <div class="form-group">
-                <label for="amount">Amount:</label>
+                <label for="amount">Total Amount:</label>
                 <input type="text" name="amount" id="amount" value="' . number_format($amount) . '">
             </div>
                 <button class="submitReservation" type="submit">Submit</button>
