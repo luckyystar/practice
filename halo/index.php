@@ -25,15 +25,6 @@ $calendar->attachObserver('showCell', $bookableCell);
 $bookableCell->routeActions();
 
 echo $calendar->show();
-//changesheys
-//changesmqkdnmwjdnwjbdfhw
-//changes(2)
-//changes(3)
-//changes (4)
-//crcrtrcununhuq
-//changes final
-//kurt
-//kurtykurt
 ?>
 </body>
 </html>
