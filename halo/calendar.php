@@ -126,52 +126,52 @@ class Calendar
      * @access              private
      */
     private function _showDay($cellNumber, $attributes = false)
-    {
-        if ($this->currentDay == 0) {
-            // 1 (for Monday) through 7 (for Sunday)
-            $firstDayOfTheWeek = date('N', strtotime($this->currentYear . '-' . $this->currentMonth . '-01'));
-            if ($this->sundayFirst) {
-                if ($firstDayOfTheWeek == 7) {
-                    $firstDayOfTheWeek = 1;
-                } else {
-                    $firstDayOfTheWeek++;
-                }
-            }
-            if (intval($cellNumber) == intval($firstDayOfTheWeek)) {
-                $this->currentDay = 1;
+{
+    // Initialize $pastClass
+    $pastClass = '';
+
+    if ($this->currentDay == 0) {
+        // 1 (for Monday) through 7 (for Sunday)
+        $firstDayOfTheWeek = date('N', strtotime($this->currentYear . '-' . $this->currentMonth . '-01'));
+        if ($this->sundayFirst) {
+            if ($firstDayOfTheWeek == 7) {
+                $firstDayOfTheWeek = 1;
+            } else {
+                $firstDayOfTheWeek++;
             }
         }
-    
-        if (($this->currentDay != 0) && ($this->currentDay <= $this->daysInMonth)) {
-            $this->currentDate = date('Y-m-d', strtotime($this->currentYear . '-' . $this->currentMonth . '-' . ($this->currentDay)));
-            $dayNumber = $this->currentDay;
-            $cellContent = $this->_createCellContent($attributes); // This line retains the original functionality
-            $this->currentDay++;
-        } else {
-            $this->currentDate = null;
-            $cellContent = null;
-            $dayNumber = null;
+        if (intval($cellNumber) == intval($firstDayOfTheWeek)) {
+            $this->currentDay = 1;
         }
-    
-        // Define border class
-        $borderClass = ($cellNumber % 7 == 1 ? ' start' : ($cellNumber % 7 == 0 ? ' end' : ''));
-    
-        // Return the cell with the day number and original content
-        return '<li id="li-' . $this->currentDate . '" class="cell' . $borderClass . ($cellContent == null ? ' mask' : '') . '">' . '<span class="day-number">' . $dayNumber . '</span>' . ($cellContent ? '<div class="green-box">' . $cellContent . '</div>' : '') . '</li>';
     }
-    
 
+    if (($this->currentDay != 0) && ($this->currentDay <= $this->daysInMonth)) {
+        $this->currentDate = date('Y-m-d', strtotime($this->currentYear . '-' . $this->currentMonth . '-' . ($this->currentDay)));
+        $dayNumber = $this->currentDay;
+        $cellContent = $this->_createCellContent($attributes); // This line retains the original functionality
 
+        // Check if the current date is in the past
+        $today = date('Y-m-d');
+        if ($this->currentDate < $today) {
+            // Disable past dates by making cell content null and add a class for styling
+            $cellContent = null;
+            $pastClass = ' past';
+        }
 
+        $this->currentDay++;
+    } else {
+        $this->currentDate = null;
+        $cellContent = null;
+        $dayNumber = null;
+    }
 
- 
-    /**
-     * create navigation
-     *
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+    // Define border class
+    $borderClass = ($cellNumber % 7 == 1 ? ' start' : ($cellNumber % 7 == 0 ? ' end' : ''));
+
+    // Return the cell with the day number and original content
+    return '<li id="li-' . $this->currentDate . '" class="cell' . $borderClass . ($cellContent == null ? ' mask' : '') . $pastClass . '">' . '<span class="day-number">' . $dayNumber . '</span>' . ($cellContent ? '<div class="green-box">' . $cellContent . '</div>' : '') . '</li>';
+}
+
     private function _createNavi()
     {
         $nextMonth = $this->currentMonth == 12 ? 1 : intval($this->currentMonth) + 1;
